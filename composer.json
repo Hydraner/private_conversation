@@ -1,0 +1,16 @@
+{
+  "name": "drupal/private_conversation",
+  "type": "drupal-module",
+  "description": "Private conversation/message solution for Drupal 8, based on the groups module.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/private_conversation",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/private_conversation",
+    "source": "http://cgit.drupalcode.org/private_conversation"
+  },
+  "require": {
+    "drupal/group": "dev-1.x"
+  }
+}
