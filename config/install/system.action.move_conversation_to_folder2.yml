@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - private_conversation
+id: move_conversation_to_folder2
+label: 'Move conversation(s) to folder'
+type: group
+plugin: move_conversation_to_folder
+configuration: {  }

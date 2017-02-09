@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - group
+id: group.private_conversation_thread
+field_name: private_conversation_thread
+entity_type: group
+type: comment
+settings:
+  comment_type: private_conversation_thread
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

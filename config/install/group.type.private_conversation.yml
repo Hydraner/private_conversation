@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: private_conversation
+label: 'Private conversation'
+description: 'Used as a messaging tool between users.'
+creator_roles:
+  - private_conversation-owner

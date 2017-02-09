@@ -1,0 +1,24 @@
+# Schema for the views plugins of the private conversation module.
+
+views.argument_default.folder_id_from_url:
+  type: ignore
+  label: 'Ignore this argument'
+
+
+
+#views.argument_default.folder_id_from_url:
+#  type: mapping
+#  label: 'Folder ID from current route'
+#  mapping:
+#    value:
+#      type: string
+#      label: 'Folder ID'
+
+views.filter_value.has_id_from_user:
+  type: string
+  label: 'Filter value'
+
+
+#views.filter.has_id_from_user:
+#  type: views_filter
+#  label: 'Has id from user'

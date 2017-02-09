@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Contains private_conversation.module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_menu_alter().
+ */
+function private_conversation_preprocess_menu(&$variables) {
+  $items = [];
+
+  $folder_manager = \Drupal::getContainer()
+    ->get('entity_type.manager')
+    ->getStorage('private_conversation_folder');
+  $folder_ids = $folder_manager->getQuery()
+    ->condition('user_id', \Drupal::currentUser()->id())
+    ->sort('weight')
+    ->execute();
+
+  $entities = $folder_manager->loadMultiple($folder_ids);
+
+  if ($variables['menu_name'] == 'private-conversation') {
+    foreach ($variables['items'] as $key => $item) {
+      if ($key == 'private_conversation_folder.folder') {
+        foreach ($entities as $folder_id => $folder) {
+          $items['private_conversation_folder.' . $folder_id] = [
+            'is_expandable' => FALSE,
+            'is_collapsed' => FALSE,
+            'in_active_trail' => FALSE,
+            'attributes' => new Attribute(),
+            'title' => $folder->label(),
+            'url' => new Url('entity.private_conversation_folder.canonical', ['private_conversation_folder' => $folder_id]),
+            'below' => [],
+            'original_link' => NULL
+          ];
+        }
+      }
+      else {
+        $items[$key] = $item;
+      }
+    }
+    $variables['items'] = $items;
+  }
+}
+
+/**
+ * Implements hook_entity_tyoe_alter().
+ */
+function private_conversation_entity_type_alter(&$entity_info) {
+  $handlers = $entity_info['group']->get('handlers');
+  // @todo: Alter route to adjust path.
+  $handlers['form']['add'] = 'Drupal\private_conversation\Form\PrivateConversationGroupForm';
+  $handlers['form']['edit'] = 'Drupal\private_conversation\Form\PrivateConversationGroupForm';
+  $entity_info['group']->set('handlers', $handlers);
+}
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function private_conversation_entity_extra_field_info() {
+  $extra = [];
+
+  $extra['group']['private_conversation']['display']['member_list'] = [
+    'label' => t('Member list'),
+    'description' => t('Member list view'),
+    'visible' => TRUE,
+    'weight' => 0
+  ];
+
+  $extra['group']['private_conversation']['display']['ghost_node'] = [
+    'label' => t('Ghost node thread'),
+    'description' => t('Ghost node, containing the comment thread.'),
+    'visible' => TRUE,
+    'weight' => 0
+  ];
+
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function private_conversation_group_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($display->getComponent('member_list')) {
+    $build['member_list'] = [
+      '#type' => 'view',
+      '#name' => 'private_conversation_members',
+      '#arguments' => [
+        $entity->id()
+      ]
+    ];
+  }
+  if ($display->getComponent('ghost_node')) {
+    foreach ($entity->getContentEntities() as $content_entity) {
+      if ($content_entity->getEntityTypeId() != 'node')  {
+        continue;
+      }
+      $render_controller = \Drupal::entityManager()->getViewBuilder($content_entity->getEntityTypeId());
+      $build['ghost_node_' . $content_entity->id()] = $render_controller->view($content_entity, 'full', NULL);
+    }
+  }
+}

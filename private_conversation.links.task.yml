@@ -1,0 +1,22 @@
+# Folder routing definition
+private_conversation_folder.settings_tab:
+  route_name: private_conversation_folder.settings
+  title: 'Settings'
+  base_route: private_conversation_folder.settings
+
+entity.private_conversation_folder.canonical:
+  route_name: entity.private_conversation_folder.canonical
+  base_route: entity.private_conversation_folder.canonical
+  title: 'View'
+
+entity.private_conversation_folder.edit_form:
+  route_name: entity.private_conversation_folder.edit_form
+  base_route: entity.private_conversation_folder.canonical
+  title: 'Edit'
+
+entity.private_conversation_folder.delete_form:
+  route_name:  entity.private_conversation_folder.delete_form
+  base_route:  entity.private_conversation_folder.canonical
+  title: Delete
+  weight: 10
+

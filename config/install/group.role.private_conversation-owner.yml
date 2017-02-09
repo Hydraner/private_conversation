@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.private_conversation
+id: private_conversation-owner
+label: Owner
+weight: -97
+internal: false
+audience: member
+group_type: private_conversation
+permissions_ui: true
+permissions:
+  1: 'view group'
+  2: 'view group_membership content'
+  3: 'edit group'

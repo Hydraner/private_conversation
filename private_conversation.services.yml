@@ -1,0 +1,6 @@
+services:
+  private_conversation.folder_route_context:
+    class: 'Drupal\private_conversation\Context\FolderRouteContext'
+    arguments: ['@current_route_match']
+    tags:
+      - { name: 'context_provider' }

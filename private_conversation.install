@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains private_conversation.install.
+ */
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install().
+ */
+function private_conversation_install() {
+  // Create default inbox menu link.
+  $menu_link = MenuLinkContent::create([
+    'title' => 'Inbox',
+    'link' => ['uri' => 'internal:/conversations/inbox'],
+    'menu_name' => 'private_conversation',
+    'expanded' => TRUE,
+  ]);
+  $menu_link->save();
+}

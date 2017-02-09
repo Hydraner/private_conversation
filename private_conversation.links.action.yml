@@ -1,0 +1,12 @@
+entity.private_conversation_folder.add_form:
+  route_name: entity.private_conversation_folder.add_form
+  title: 'Add Folder'
+  appears_on:
+    - entity.private_conversation_folder.overview_form
+
+private_conversation.add_form:
+  route_name: entity.group.add_page
+  title: 'Start conversation'
+  appears_on:
+    - view.private_conversation_inbox.inbox
+    - view.private_conversation_inbox.folder

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - private_conversation
+_core:
+  default_config_hash: Ol-Dv6kkhNhXbZoVAJzDeHtj_myh3gyK18FMoYmb1Ho
+id: private_conversation_folder.conversations
+field_name: conversations
+entity_type: private_conversation_folder
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

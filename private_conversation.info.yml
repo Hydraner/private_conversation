@@ -1,0 +1,8 @@
+name: Private conversation
+type: module
+description: Provides some functionality around the group module to simulate a private messaging system.
+core: 8.x
+package: msg
+dependencies:
+  - group
+  - history

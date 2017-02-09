@@ -1,0 +1,30 @@
+entity.private_conversation_folder.overview_form:
+  path: '/conversations/folder'
+  defaults:
+    _form: 'Drupal\private_conversation\Form\OverviewFolder'
+    _title: 'Folder list'
+  requirements:
+    _access: 'TRUE'
+
+'<private_conversation_folder>':
+  path: ''
+  options:
+    _no_path: TRUE
+  requirements:
+    _access: 'TRUE'
+
+group.multiple_move_confirm:
+  path: '/conversations/folder/move'
+  defaults:
+    _form: '\Drupal\private_conversation\Form\GroupMultipleMoveConfirm'
+    _title: 'Move conversation(s)'
+  requirements:
+    _access: 'TRUE'
+
+group.multiple_move_confirm:
+  path: '/conversations/%group'
+  defaults:
+    _form: '\Drupal\private_conversation\Form\GroupMultipleMoveConfirm'
+    _title: 'Move conversation(s)'
+  requirements:
+    _access: 'TRUE'

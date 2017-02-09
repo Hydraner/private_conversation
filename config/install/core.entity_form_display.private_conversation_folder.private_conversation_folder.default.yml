@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.private_conversation_folder.private_conversation_folder.conversations
+  module:
+    - private_conversation
+id: private_conversation_folder.private_conversation_folder.default
+targetEntityType: private_conversation_folder
+bundle: private_conversation_folder
+mode: default
+content:
+  conversations:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

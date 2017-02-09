@@ -1,0 +1,20 @@
+# Folder menu items definition
+entity.private_conversation_folder.overview_form:
+  title: 'Manage inbox'
+  route_name: entity.private_conversation_folder.overview_form
+  description: 'List folders'
+  weight: 100
+  menu_name: private-conversation
+
+private_conversation_folder.folder:
+  title: 'Folder'
+  route_name: '<private_conversation_folder>'
+  description: 'List folders'
+  weight: 100
+  menu_name: private-conversation
+
+private_conversation_folder.admin.structure.settings:
+  title: Folder settings
+  description: 'Configure Folder entities'
+  route_name: private_conversation_folder.settings
+  parent: system.admin_structure

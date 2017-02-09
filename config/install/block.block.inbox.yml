@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.private-conversation
+  module:
+    - system
+  theme:
+    - bartik
+id: inbox
+theme: bartik
+region: sidebar_first
+weight: -7
+provider: null
+plugin: 'system_menu_block:private-conversation'
+settings:
+  id: 'system_menu_block:private-conversation'
+  label: Inbox
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: '/conversations/*'
+    negate: false
+    context_mapping: {  }

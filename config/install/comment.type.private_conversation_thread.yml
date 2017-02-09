@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: private_conversation_thread
+label: 'Private conversation thread'
+target_entity_type_id: group
+description: 'Messaging thread for the private conversation group type.'

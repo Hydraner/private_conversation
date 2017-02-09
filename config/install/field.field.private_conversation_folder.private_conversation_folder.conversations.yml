@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.private_conversation_folder.conversations
+    - group.type.private_conversation
+  module:
+    - private_conversation
+_core:
+  default_config_hash: fWxw0na9c8lZGBF8seijcRxh8hm1HZehY6Mx8BXU2Os
+id: private_conversation_folder.private_conversation_folder.conversations
+field_name: conversations
+entity_type: private_conversation_folder
+bundle: private_conversation_folder
+label: Conversations
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      private_conversation: private_conversation
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

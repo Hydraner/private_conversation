@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: private-conversation
+label: 'Private conversation menu'
+description: 'Links related to the private conversaiton'
+locked: true

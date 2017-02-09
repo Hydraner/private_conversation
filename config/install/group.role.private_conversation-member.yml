@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.private_conversation
+id: private_conversation-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: private_conversation
+permissions_ui: true
+permissions:
+  - 'leave group'
+  - 'view group'
+  - 'view group_membership content'
